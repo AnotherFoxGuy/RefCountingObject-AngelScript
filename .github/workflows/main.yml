@@ -1,0 +1,45 @@
+name: Build & Test
+on: [ push, pull_request ]
+jobs:
+  build:
+    name: Testing on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ ubuntu-latest, windows-latest ]
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Get latest CMake and ninja
+        uses: lukka/get-cmake@latest
+
+      - name: Cache conan
+        uses: actions/cache@v2.1.7
+        with:
+          key: conan-${{ runner.os }}-${{ hashFiles('**/Testbed/CMakeLists.txt') }}
+          path: ~/.conan/
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: "3.9"
+
+      - name: Enable Developer Command Prompt
+        uses: ilammy/msvc-dev-cmd@v1.10.0
+
+      - name: Install conan
+        run: pip install conan
+
+      - name: Configure
+        env:
+          CONAN_USER_HOME_SHORT: None
+        run: cmake -GNinja -DCMAKE_BUILD_TYPE=Release -DUSE_CONAN=ON Testbed
+
+      - name: Build
+        run: ninja
+
+      - name: Test
+        run: ctest --output-on-failure
+
+      - name: Clean Conan pkgs
+        run: conan remove "*" -fsb

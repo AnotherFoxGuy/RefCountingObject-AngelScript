@@ -2,10 +2,11 @@
 #include "RefCountingObject.h"
 #include "RefCountingObjectPtr.h"
 
+#include <angelscript.h>
+#include <cassert>
+#include <iostream>
 #include <string>
 #include <vector>
-#include <cassert>
-#include <angelscript.h>
 
 class Horse: public RefCountingObject<Horse>
 {

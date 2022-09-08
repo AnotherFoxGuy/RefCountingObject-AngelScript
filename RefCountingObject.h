@@ -9,7 +9,7 @@
 #include <cassert>
 
 #if !defined(RefCoutingObject_DEBUGTRACE)
-#   define RefCoutingObject_DEBUGTRACE
+#   define RefCoutingObject_DEBUGTRACE()
 #endif
 
 /// Self reference-counting objects, as requred by AngelScript garbage collector.

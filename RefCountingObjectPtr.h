@@ -9,6 +9,7 @@
 
 #include <angelscript.h>
 #include <cassert>
+#include <stdio.h>
 
 #if !defined(RefCoutingObjectPtr_DEBUGTRACE)
 #   define RefCoutingObjectPtr_DEBUGTRACE

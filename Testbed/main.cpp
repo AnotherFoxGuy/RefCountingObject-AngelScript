@@ -49,6 +49,7 @@ int getch()
 	return ch;
 }
 
+#define fopen_s(pFile,filename,mode) ((*(pFile))=fopen((filename),(mode)))==NULL
 #endif
 
 // Function prototypes
@@ -69,7 +70,7 @@ int main(int argc, char **argv)
 
 	// Wait until the user presses a key
 	std::cout << std::endl << "Press any key to quit." << std::endl;
-	while(!_getch());
+	while(!getch());
 
 	return 0;
 }
