@@ -9,6 +9,8 @@ project(testbed)
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 set(CMAKE_CXX_STANDARD 14)
 
+option(USE_CONAN "Use conan for installing deps" ON)
+
 if (USE_CONAN)
     if (NOT EXISTS "${CMAKE_BINARY_DIR}/conan.cmake")
         message(STATUS "Downloading conan.cmake from https://github.com/conan-io/cmake-conan")
