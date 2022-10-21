@@ -1,0 +1,15 @@
+# CMakeLists.txt and setup script will be generated from this file
+# see: http://autocmake.readthedocs.io/en/latest/developers/configuration.html
+# adapt the following lines and expand
+
+name: testbed
+
+language: CXX
+default_build_type: release
+min_cmake_version: 3.10
+url_root: https://git.anotherfoxguy.com/AnotherFoxGuy/autocmake/raw/branch/master/
+
+modules:
+- compilers:
+  - source:
+    - '%(url_root)modules/cxx.cmake'
