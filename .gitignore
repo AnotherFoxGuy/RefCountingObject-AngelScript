@@ -16,3 +16,4 @@ build/
 .idea
 cmake-build-*/
 /.vs
+CMakeUserPresets.json
